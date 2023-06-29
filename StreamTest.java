@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class StreamTest {
 
     public static void main(String[] arg) {
@@ -37,5 +37,21 @@ public class StreamTest {
         //O foreach não retorna nd
         int value = (int) list.stream().count();
         System.out.println(value);
+
+        System.out.println("----------------------");
+        //O foreach não retorna nd
+        int value1 = list.stream().min(Comparator.naturalOrder()).get();//Aqui ele retornou um objeto, por isso coloquei o .get()
+        System.out.println(value1);
+
+        System.out.println("----------------------");
+        List<Integer> novaList = list.stream()
+                .filter(e -> e% 2 == 0)//Condição da nova lista
+                .collect(Collectors.toList());//Esse collect ele é mais sofisticado e com esse param ele vai retornar uma nova lista fomardo pelo filter
+        System.out.println(novaList);
+
+        System.out.println("----------------------");//Esse retorno do tipo do Map depende do que vai ser retornado do group by
+        Map<Integer, List<Integer>> mapa = list.stream().collect(Collectors.groupingBy(e -> e % 3));
+        System.out.println(mapa);//Esse groupby é super util e é a mesma ideia do sql
+
     }
 }
