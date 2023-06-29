@@ -1,5 +1,9 @@
 public class StringBufferTest {
+
+    int teste = 4;
     public static void main(String[] arg) {
+
+
 
         String[] letras = {"A", "B", "C", "D", "E"};
 
@@ -9,6 +13,7 @@ public class StringBufferTest {
 
         for (String letra : letras){
             alfabeto += letra;
+
         }
 
         System.out.println(alfabeto);
@@ -24,6 +29,12 @@ public class StringBufferTest {
         //Fazer o reverso da string
 
         System.out.println(sb.reverse());
+    }
+
+    public void testett() {
+        for (int i = 0; i<10; i++) {
+            teste++;
+        }
     }
 
 }
