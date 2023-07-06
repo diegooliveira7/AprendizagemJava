@@ -19,9 +19,9 @@ public class ProductController {
     ProductRepository productRepository;
 
     @PostMapping("/products")
-    public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {
+    public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {//Ele vai receber esse post esses valores, com o @Valid, vai ter validações
         var productModel = new ProductModel();
-        BeanUtils.copyProperties(productRecordDto, productModel);
+        BeanUtils.copyProperties(productRecordDto, productModel);//Conversão de um para o outro
         return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(productModel));
     }
 }
